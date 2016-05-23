@@ -1,0 +1,21 @@
+# For more information about the robots.txt standard, see:
+# http://www.robotstxt.org/orig.html
+
+User-agent: *
+Disallow: /123/
+Disallow: /ajax/
+Disallow: /blocks/
+Disallow: /cache/
+Disallow: /images/
+Disallow: /include/
+Disallow: /insert/
+Disallow: /lib/
+Disallow: /libraries/
+Disallow: /logs/
+Disallow: /modul/
+Disallow: /sxd/
+Disallow: /vb/
+
+Host: vt-fishing.com.ua
+
+Sitemap: http://vt-fishing.com.ua/sitemap.xml

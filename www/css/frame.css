@@ -1,0 +1,69 @@
+html,body{
+	height:100%;
+	font-size:15px;
+	font-family:Verdana,Geneva,sans-serif;
+	text-align:justify;
+	cursor:default;
+}
+
+.maxw{
+	margin:0 auto;
+	min-width:720px;
+	max-width:1200px;
+}
+
+.header{
+	min-height:149px;
+	margin-bottom:10px;
+	border-radius:0 0 5px 5px;
+}
+
+#left_column{
+	width:240px;
+	left:0;
+}
+
+#main_column{
+	min-width:480px;
+	max-width:960px;
+	overflow:hidden;
+}
+/*  main_column_child Start */
+#l_child_main_column{
+	overflow:hidden;
+	min-width:240px;
+	max-width:720px;
+}
+
+#r_child_main_column{
+	overflow:hidden;
+	width:240px;
+	right:0;
+}
+/*  main_column_child End */
+
+.footer{
+	margin:0 auto;
+	height:40px;
+	font-size:70%;
+}
+
+/* Для отображения на устройствах меньше 480px*/        
+@media screen and (min-width:240px) and (max-width:319px){
+.maxw{min-width:240px;max-width:240px;}
+#main_column{min-width:240px;max-width:240px;}
+#l_child_main_column{min-width:240px;max-width:240px;}}
+@media screen and (min-width:320px) and (max-width:480px){
+.maxw{
+	min-width:240px;
+	max-width:480px;
+}
+#main_column{
+	min-width:240px;
+	max-width:480px;
+}
+#l_child_main_column{
+	min-width:240px;
+	max-width:480px;
+}
+}

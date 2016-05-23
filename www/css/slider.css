@@ -1,0 +1,30 @@
+#main_slider{
+position:relative;
+max-width:100%;  /* можно ограничить по ширине в любых единицах, в т.ч. px (необязательно) */
+max-height:207px;/*  можно ограничить по высоте в любых единицах, в т.ч. px (необязательно) */
+overflow:hidden; /*  удалить, если нет max-width, max-height и outline у img */
+margin:5px 4px;
+}
+#main_slider img{
+position:absolute;
+top:0;
+left:0;
+/* Версия 1: абзац для того, чтобы изображение было растянуто во весь слайдер */
+height:100%;
+width:100%;
+}
+#main_slider div{
+position:relative;
+height:0;
+margin-bottom:25%;/*  процент от ширины (тут есть калькулятор) */
+z-index:3;
+padding:13px;
+}
+#main_slider img:nth-of-type(1){
+z-index:2;
+}
+#main_slider button:nth-of-type(1){
+opacity:0.4;
+}
+#main_slider button{
+border-radius:9px;min-width:18px;}

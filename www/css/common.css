@@ -1,0 +1,119 @@
+.snow{position:absolute;z-index:13;visibility:visible;top:30px;left:15px}
+#snowmen{position:fixed;right:5px;bottom:32px;z-index:3}
+h1,h2,h3{
+	margin:0 5px 4px;
+	text-align:center;
+	font-family:Verdana,Geneva,sans-serif;
+}
+h4{padding:2px 5px;font-family:Verdana,Geneva,sans-serif}
+
+p{margin:5px}
+.note{font-size:70%}
+/*<header>*/
+
+#logo{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:3;
+}
+
+#top_nav_r{
+	position:absolute;
+	right:0;
+	top:0;
+	width:520px;
+	z-index:5;
+	height:42px;
+}
+@media screen and (min-width:240px) and (max-width:250px){
+#top_nav_r{width:240px;}
+}
+#indent_slider{
+	width:240px;
+	height:1px;
+}
+#slider{
+	height:96px;
+}
+#slider img{
+	margin:15px 0 0 55px;
+}
+@media screen and (min-width:240px) and (max-width:250px){#slider img{margin:15px 0 0 0;}}
+#top_nav_main{min-height:26px;}
+
+
+/* End <header> End */
+/*<wrapper>*/
+#wrapper{border-radius:5px}
+
+.forum_user{
+	width:235px;
+	font-size:80%;
+}
+.td_linc{border-top:dotted thin;}
+
+.td_date{width:67px;border-left:dotted thin;border-top:dotted thin;}
+.forum_user a{
+	padding-left:7px;
+}
+
+/*#form_login*/
+.login_tr_margin{
+	height:7px;
+}
+.login_tr_first{
+	width:30%;
+}
+.login_tr_second{
+	width:69%;
+}
+.remember_link{
+	font-size:70%;
+}
+
+
+.nav_link a{margin:0 3px}
+@media screen and (min-width:240px) and (max-width:780px){.nav_link a{margin:0 10px}}
+.img_link{border-radius:6px}
+
+/*school*/
+.wrap_pic{
+	width:110px;
+	margin:0 50px;
+
+}
+/* end school*/
+
+#vk_groups{
+	margin:5px auto;
+	border-style:solid;
+	border-width:thin;
+}
+#ok_group_widget{
+	margin:5px auto;	
+	
+}
+/*<wrapper>End*/
+.fon{
+	margin:5px 3px;
+	border:thin solid;
+	border-radius:3px 3px 0 0;
+}.colorbox{cursor: url(../img/site/colorbox/zoomin.cur),pointer !important;}
+.fon_head{
+	border-bottom:thin solid;
+	border-radius:3px 3px 0 0;
+}
+.flex_str{
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+}.flex_str div{margin:5px 0 5px 5px}
+
+/*кнопки share*/
+#share{position:fixed;right:8px;bottom:35px;max-width:38px}
+.ya-share2 a{margin:6px 0}
+/*#share div{margin:3px 0;position:relative}*/
+
+#informer_wrap{margin:4px 0;}
+.rambler,.yandex{margin:4px auto;}

@@ -1,0 +1,46 @@
+*{margin:0;padding:0}
+img{border:0;max-width:100%}
+.align-left,.al{text-align:left}
+.align-center,.ac{text-align:center}
+.align-right,.ar{text-align:right}
+.float-left,.fl{float:left}
+.mr{margin-right:5px}
+.float-right,.fr{float:right}
+.ml{margin-left:5px}
+.clear,.cl{clear:both}
+.rel{position:relative}
+.bold{font-weight:bold}
+.div-centr{display:inline-block;overflow:hidden}
+.five{margin:5px}
+/*End Default*/
+#toTop{
+	width:85px;
+	border:1px solid #ccc;
+	background:#f7f7f7;
+	text-align:center;
+	padding:5px;
+	position:fixed;
+	bottom:7px; /* отступ кнопки от нижнего края страницы*/
+	right:7px;
+	cursor:pointer;
+	display:none;
+	color:#333;
+	font-family:verdana;
+	font-size:90%;
+}
+/*+++++++  Video  ++++++++++++++*/
+.video-responsive{ 
+  position:relative; 
+  padding-bottom:56.25%; 
+  height:0; 
+  overflow:hidden; 
+} 
+.video-responsive iframe,.video-responsive object,.video-responsive embed{
+  position:absolute; 
+  top:0; 
+  left:0; 
+  width:100%;
+  height:100%;
+  border:0;
+}
+/*+++++++End Video End++++++++++++++*/

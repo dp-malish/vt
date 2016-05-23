@@ -1,0 +1,4 @@
+<div id="main_column" class="rel"><!--Right column--><div id="r_child_main_column" class="float-right rel"><?php
+echo $right_content=$fish_menu.$last_article.$right_content.$new_user; ?><div id="vk_groups" class="section"></div><div id="ok_group_widget"></div><div class="clear"></div></div><!--End Right column-->
+<!--Left column Учим русский--><div id="l_child_main_column" class="rel"><?php echo $pre_main_content; ?><div class="clear"></div><main><?php echo $main_content; ?></main><div class="clear"></div></div><!--End Left column--><div class="clear"></div>
+</div><div class="clear"></div></div>

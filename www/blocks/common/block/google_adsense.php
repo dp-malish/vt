@@ -1,0 +1,2 @@
+<?php
+$google_ads='<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0781640196587335" data-ad-slot="9835920915" data-ad-format="auto"></ins><script>(adsbygoogle=window.adsbygoogle || []).push({});</script>';?>

@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+/****form_login****/
+form{margin-bottom:10px;}
+#btn_login, #btn_logout{width:100%;}
+/*End form_login*/
+
+.tb_insert{width:100%;}
+.input_text{width:97%;}
+textarea{width:97%;}
+/****reference_fish****/
+.ref_fish_tabl{
+	width:100%;
+	text-align:center;
+/*	border: 4px double black;
+	border-collapse:collapse;*/
+}
+.ref_fish_tabl td {
+ border: 1px #edcdb7 solid; /* стиль рамки ячеек */
+ padding: 0.2em; 
+}
+
+/****End reference_fish End****/

@@ -1,0 +1,230 @@
+#no_user ul{
+	list-style:none;
+	font-size:80%;
+	font-weight:bold;
+	margin-right:24px;
+	padding-top:6px;
+
+}
+#no_user li{
+	display:inline;
+	background-color:#F00;
+	margin:0 4px;
+	padding:10px 10px 5px;
+	border-radius:0 0 5px 5px;
+}
+#no_user a{
+	text-decoration:none;color:#FFF;
+}
+/** if user login**/
+#hello_user ul{
+	list-style:none;
+	font-size:70%;
+	font-weight:bold;
+	margin-right:24px;
+	padding-top:4px;
+
+}
+#hello_user li{
+	display:inline;
+	margin:0 4px;
+	padding:5px 6px 5px;
+	border-radius:0 0 4px 4px;
+}
+#hello_user li:hover{
+	background-color:#ff0000;
+}
+#hello_user a{
+	text-decoration:none;color:#FFF;
+}
+/***************************************************************/
+/***************************************************************/
+#top_nav_main ul{
+	margin-left:20px;
+	list-style:none;
+	font-size:80%;
+	font-weight:bold;
+}
+#top_nav_main li{
+	float:left;
+	margin-right:1px; /* создание отступов для того, чтобы не сливались пункты меню. */
+	border:#875F32 thin solid;
+}
+#top_nav_main li a{
+	display: block; /* Изменение отображения на блочное для того чтобы иметь возможность задать внутренние отступы. */
+	padding: 5px 20px 5px;  /* Внутри блочные отступы. */
+	color:#fff;
+	text-decoration:none;
+	position:relative; /* Это необходимо при использовании Internet Explorer 6 для того, чтобы ссылка по всей своей площади была «кликабельной». */
+}
+#top_nav_main li a:hover{
+	background-color:#EEEEEE;
+	color:#000;
+}
+/***************************************************************/
+/***************************************************************/
+#top_nav_child ul{
+	margin-left:20px;
+	list-style:none;
+	font-size:80%;
+	font-weight:bold;
+}
+
+/***************************************************************/
+/***************************************************************/
+.left_menu{
+	margin:5px 2px;
+	padding:0;
+	list-style:none;
+	width:inherit;
+	border-bottom:1px solid #FFF;
+}
+.left_menu li{
+	position:relative;
+	background-color:#eae1b8;
+}
+
+.left_menu li a{
+  font-size:130%;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.left_menu li ul li ul{
+	display:none;
+	top:0;
+	left:235px;
+	width:240px;
+	position:absolute;
+	list-style:none;
+}
+
+.left_menu li li{
+  display:block;
+  border:1px solid #FFF;
+  padding:3px;
+  text-decoration:none;
+  border-bottom:1px solid #FFF;
+  font-size:80%;
+  text-decoration:underline;
+  padding-left:13px;
+  text-align:left;  
+}
+
+.left_menu li li li{
+  font-size:105%;
+}
+
+.left_menu li:hover > ul{
+  display:block;
+  z-index:10;
+}
+/***************************************************************/
+/***************************************************************/
+.left_menu_child{
+	margin:7px 0;
+	list-style:none;
+}
+.left_menu_child li{
+  padding:5px;
+}
+/***************************************************************/
+/***************************************************************/
+.lm ul{list-style:none}
+.lm ul li{
+	position:relative;
+	background-color:#eae1b8;
+	border-bottom:1px solid #FFF;
+	min-height:25px;
+	padding:3px 0 0 5px;
+}
+.lm ul ul{
+	margin:4px 0 0 5px
+}
+
+.lm ul ul li{
+	/*background-color:#eae1b8;;*/
+	border-bottom:none;
+	padding:3px 0 0 15px;
+}
+
+
+.lm ul a{
+ /*  font-size:110%;
+ text-decoration:none;*/
+  font-weight:bold;
+}
+.lm ul ul a{
+ /*  font-size:110%;
+ text-decoration:none;*/
+  font-weight:normal;
+}
+
+/*.lm li ul a{text-decoration:none;}*/
+
+/***************************************************************/
+/***************************************************************/
+/*fish_menu*/
+#fish_menu{
+    list-style:none;
+}
+#fish_menu div{
+    display:block;
+    background-color:#eae1b8;
+	border:groove 1px #edcdb7;
+    font-weight:bold;
+	color:#5c3317;
+    margin:1px;
+    cursor:pointer;
+    padding:5px 2px 5px 2px;
+	text-align:center;
+    list-style:circle;
+    border-radius:8px;
+}
+#fish_menu div:hover{
+	color:#B2251F;
+}
+#fish_menu ul{
+    list-style:none;
+}
+#fish_menu ul{
+    display:none;
+}
+#fish_menu ul li{
+    font-weight:normal;
+    cursor:auto;
+    background-color:#fefee2;
+    padding:0 5px;
+}
+/*End fish_menu End*/
+/***************************************************************/
+/***************************************************************/
+#base_menu{
+	display:inline-block;
+	width:100%;
+  	font-size:80%;
+	font-weight:bold;	
+}
+#base_menu li{
+	float:left;
+	list-style:none;
+	/*border:#875F32 thin solid;*/
+	/*width: 25%;*/
+
+}
+#base_menu li a{
+	display:block;
+	padding:8px 20px 10px;
+	text-decoration:none;
+	color:#FFF;
+}
+#base_menu li:hover{
+	background-color:#fefee2;
+}
+#base_menu li:hover a{
+	color:#5c3317;
+}
+#base_menu li.sel_base_menu a{
+	color:#5c3317;
+	background-color:#fefee2;
+	float:right;}

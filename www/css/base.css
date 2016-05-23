@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document водоёмы  */
+#note_base{
+	display:none;
+}
+#map{min-height:400px;
+
+}
+.tr_fist{
+	width:25%;
+	overflow:hidden;
+}
+@media screen and (min-width:240px) and (max-width:820px) {
+.tr_fist{
+	font-size:75%;
+}
+}
+@media screen and (min-width:821px) and (max-width:900px) {
+.tr_fist{
+	font-size:85%;
+}
+}
+.tr_second{
+	width:55%;
+}
+.tr_input{
+	width:99%;
+	margin:7px 0;
+}
+.tr_select{
+	width:100%;
+	overflow:hidden;
+	margin-top:7px;
+}
+/**/.chzn-choices{
+	width:100%;
+	overflow:hidden;
+}
+.tr_third{
+	width:18%;
+	overflow:hidden;
+	font-size:80%;
+	color:#7B7B7C;
+}
+#base_create .err_form p{
+	color:#F00;
+	font-size:75%;
+	text-align:center;
+}

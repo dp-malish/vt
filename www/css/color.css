@@ -1,0 +1,27 @@
+body{background:#eae1b8 none;}
+
+.header{background:#703e1c url(../img/site/png.php?img=back_fon);}
+
+#top_nav_r{color:#FFF}
+
+#top_nav_main,#base_menu {background-color:#FF0000}
+
+#wrapper{background-color:#fefee2}
+
+.left_menu_child{border-top:#edcdb7 thin solid;}
+
+.left_menu_child{border-bottom:#edcdb7 thin solid;}
+
+.fon,.section,.td_date,.td_linc,.ind_news{border-color:#edcdb7;}
+
+.fon_head{border-color:#edcdb7;background-color:#854a21;}
+.fon_head h4,.fon_head h4 a{color:#fff}
+
+A:link{color:#5c3317;text-decoration:underline;}
+A:active{color:#5c3317}
+A:visited{color:#520c0e}
+A:hover{color:#B2251F;text-decoration:blink;}
+
+h1,h2,h3,h4{color:#B2251F}
+
+#main_slider button{border-color:#edcdb7;background:#5c3317;}
