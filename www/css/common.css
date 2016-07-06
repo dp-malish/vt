@@ -1,5 +1,6 @@
 .snow{position:absolute;z-index:13;visibility:visible;top:30px;left:15px}
-#snowmen{position:fixed;right:5px;bottom:32px;z-index:3}
+#snowmen{position:fixed;right:5px;top:32px;z-index:3;opacity:0.75;}
+#snowmen img{border-radius:33px}
 h1,h2,h3{
 	margin:0 5px 4px;
 	text-align:center;
