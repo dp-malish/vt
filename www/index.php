@@ -2,7 +2,7 @@
 define('MAIN_FILE',true);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
 $site=$_SERVER['SERVER_NAME'];$root=$_SERVER['DOCUMENT_ROOT'];
-$phpEx=substr(strrchr(__FILE__,'.'),1);	
+$phpEx=substr(strrchr(__FILE__,'.'),1);
 //++++++++++++++++++++++++++++++++++++++++++++++++++++
 //error_reporting(E_ALL);//высокий уровень ошибки
 Error_Reporting(E_ALL & ~E_NOTICE);//средний уровень ошибки
@@ -11,9 +11,11 @@ ini_set('display_errors',1);
 set_include_path(get_include_path().PATH_SEPARATOR."lib");
 spl_autoload_extensions("_class.php");spl_autoload_register();
 //классы в автозагрузке end
-$MySQLsel=new SQL_select();$Cash=new Cache_File();
-require($root.'/include/authentication.'.$phpEx);
-require($root.'/blocks/common/block/main_slyder.'.$phpEx);
+$MySQLsel=new SQL_select();
+$Cash=new Cache_File();
+
+require $root.'/include/authentication.php';
+require $root.'/blocks/common/block/main_slyder.php';
 
 $js_common='async ';
 if($_SERVER['REQUEST_URI']!='/'){
@@ -25,26 +27,27 @@ $uri=htmlspecialchars($_SERVER['REQUEST_URI'],ENT_QUOTES);$uri=urldecode($uri);
 			$uri_parts0_id=explode('-',$uri_parts[0],2);$count_uri0_parts=count($uri_parts0_id);
 			if(isset($uri_parts0_id[0]) && !isset($uri_parts0_id[1])){
 			switch($uri_parts[0]){
-			/**/
-			case 'set':$page_admin='/set';include($root.'/blocks/admin/main.'.$phpEx);break;
-//top_menu
-			case 'news':include($root.'/blocks/top_menu/news.'.$phpEx);break;
-			case 'article':include($root.'/blocks/top_menu/article.'.$phpEx);break;
-			case 'contacts':include($root.'/blocks/top_menu/contacts.'.$phpEx);break;
-			case 'about':include($root.'/blocks/top_menu/about.'.$phpEx);break;
 
-			case 'обзор':include($root.'/modul/t/obzor/obzor.'.$phpEx);break;
+			case 'set':$page_admin='/set';include $root.'/blocks/admin/main.php';break;
+//top_menu
+			case 'news':include $root.'/blocks/top_menu/news.php';break;
+			case 'article':include $root.'/blocks/top_menu/article.php';break;
+			case 'contacts':include $root.'/blocks/top_menu/contacts.php';break;
+			case 'about':include $root.'/blocks/top_menu/about.php';break;
+
+			case 'обзор':include $root.'/modul/t/obzor/obzor.php';break;
 //left_menu
-			case 'base':include($root.'/blocks/base/main.'.$phpEx);break;
-			case 'school':$table_name=$uri_parts[0];include($root.'/blocks/school/main.'.$phpEx);break;
+			case 'водоёмы':$DB=new SQLi();include $root.'/modul/l/vodoem/main.php';break;
+			case 'base':include $root.'/blocks/base/main.php';break;
+			case 'school':include $root.'/blocks/school/main.php';break;
 			
-			case 'ультралайт':include($root.'/modul/l/hishnik/ultralite.'.$phpEx);break;
-			case 'воблеры':include($root.'/modul/l/hishnik/vobler.'.$phpEx);break;
-			case 'блесны':include($root.'/modul/l/hishnik/blesna.'.$phpEx);break;
+			case 'ультралайт':include $root.'/modul/l/hishnik/ultralite.php';break;
+			case 'воблеры':include $root.'/modul/l/hishnik/vobler.php';break;
+			case 'блесны':include $root.'/modul/l/hishnik/blesna.php';break;
 			
-			case 'донка':include($root.'/modul/l/mirnaya/donka.'.$phpEx);break;
+			case 'донка':include $root.'/modul/l/mirnaya/donka.php';break;
 //right_menu
-			case 'fish':include($root.'/blocks/fish/main.'.$phpEx);break;
+			case 'fish':include $root.'/blocks/fish/main.php';break;
 			default:$index=true;break;
 			}//switch
 			}
@@ -52,7 +55,7 @@ $uri=htmlspecialchars($_SERVER['REQUEST_URI'],ENT_QUOTES);$uri=urldecode($uri);
 				switch($uri_parts0_id[0]){
 			//left_menu
 				//Школа рыболова
-				case 'спиннинговая':include $root.'/modul/l/school/spin.php';	break;//ловля
+				case 'спиннинговая':include $root.'/modul/l/school/spin.php';break;//ловля
 				
 				case 'зимний':include $root.'/modul/l/zimnyaya/spinning.php';break;//спиннинг
 				case 'зимние':include $root.'/modul/l/zimnyaya/snasti.php';break;//снасти
@@ -65,24 +68,22 @@ $uri=htmlspecialchars($_SERVER['REQUEST_URI'],ENT_QUOTES);$uri=urldecode($uri);
 		}//else
 	}catch(Exception $e){$module='404';}
 }else{$index=true;}
-if($module=='404'){header("HTTP/1.0 404 Not Found");header('Location: http://'.$site);exit;}
-if($index){
-require($root.'/blocks/common/block/index_news.'.$phpEx);
-include($root.'/blocks/top_menu/main.'.$phpEx);}
-//left - all stranici
-require($root.'/blocks/menu/left_menu.'.$phpEx);
-//require($root.'/blocks/common/block/google_adsense.'.$phpEx);
+if($module=='404'){Route::modul404();}
 
-require($root.'/blocks/common/block/last_article.'.$phpEx);
+if($index){
+	include $root.'/blocks/common/block/index_news.php';
+	include $root.'/blocks/top_menu/main.php';}
+//left - all stranici
+require $root.'/blocks/menu/left_menu.php';
+require $root.'/blocks/common/block/last_article.php';
+//require $root.'/blocks/common/block/google_adsense.php';
 
 //right - all stranici
-require($root.'/blocks/menu/fish_menu.'.$phpEx);
-
-
-if($live_user==1){require($root.'/blocks/common/block/new_user_link.'.$phpEx);}else{require($root.'/blocks/common/block/new_user.'.$phpEx);}
-
-require($root.'/blocks/common/head.'.$phpEx);
-require($root.'/blocks/common/header.'.$phpEx);
-require($root.'/blocks/common/left_column.'.$phpEx);
-require($root.'/blocks/common/right_column.'.$phpEx);
-require($root.'/blocks/common/copyright.'.$phpEx);?>
+require $root.'/blocks/menu/fish_menu.php';
+require $root.'/blocks/common/block/new_user'.($live_user==1?'_link':'').'.php';
+//body
+require $root.'/blocks/common/head.php';
+require $root.'/blocks/common/header.php';
+require $root.'/blocks/common/left_column.php';
+require $root.'/blocks/common/right_column.php';
+require $root.'/blocks/common/copyright.php';

@@ -1,90 +1,26 @@
 <?php
 class Cache_File{
-	
-	//protected $mes=1;//=idate('n');
-	
-	public function __construct(){
-	$this->cache_file;
-	$this->block_part_name;
-	}
-	
-	
-//-----------------------------------------------------------------	
-public function CacheGo($block_part_name,$cache_time,$cache_file,$full_function=true){
 
-$cache_file = 'cache/'.$cache_file; // Файл будет находиться в /cache/... .html  
-//************************
-if (file_exists($cache_file)){// Если файл с кэшем существует
-	//++++++++++++++++++++
-	if ((time() - $cache_time) < filemtime($cache_file)){//Если его время жизни ещё не прошло
-	echo file_get_contents($cache_file);//Выводим содержимое файла
+	protected $dir='cache_all/';
 
-		(bool) $flag=1;
-	}
-	//++++++++++++++++++++
-	}
-//************************
+public function IsSetCacheFile($cache_file){$cache_file=$this->dir.$cache_file;
+if(file_exists($cache_file))return file_get_contents($cache_file);else return 0;}
 
-//If not flag creat new file*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-if(!$flag){
-	$this->cache_file=$cache_file;
-	$this->block_part_name=$_SERVER['DOCUMENT_ROOT'].$block_part_name;
-	$this->MadeCache();
+public function IsSetCacheFileTime($cache_time,$cache_file){
+$cache_file=$this->dir.$cache_file;
+if(file_exists($cache_file)){
+if((time()-$cache_time)< filemtime($cache_file)){
+return file_get_contents($cache_file);}else{return 0;}
+}else{return 0;}
 }
-//If not flag creat new file*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
-}
-//-----------------------------------------------------------------	
-//-----------------------------------------------------------------	
-public function IsSetCacheFile($cache_time,$cache_file){
-
-$cache_file = 'cache/'.$cache_file; // Файл будет находиться в /cache/... .html  
-//************************
-if (file_exists($cache_file)){// Если файл с кэшем существует
-	//++++++++++++++++++++
-	if ((time() - $cache_time) < filemtime($cache_file)){//Если его время жизни ещё не прошло
-	return file_get_contents($cache_file);//Выводим содержимое файла
-	}else {return 0;}
-	//++++++++++++++++++++
-	}else {return 0;}
-//************************
-}
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-public function StartCache(){
-	ob_start();
-}
+//------------------------------
+public function StartCache(){ob_start();}
 public function StopCache($cache_file){
-	$cache_file = 'cache/'.$cache_file;	
-	$handle = fopen($cache_file, 'w'); // Открываем файл для записи и стираем его содержимое
-	fwrite($handle, ob_get_contents()); // Сохраняем всё содержимое буфера в файл
-	fclose($handle); // Закрываем файл
-	ob_end_clean();//Данная функция до отправки контента в браузер уберётотправку ))).
-	//ob_end_flush(); // Выводим страницу в браузере
-}
+$cache_file=$this->dir.$cache_file;
+$handle=fopen($cache_file,'w');
+fwrite($handle,ob_get_contents());fclose($handle);ob_end_clean();}
 public function StopCacheWithOut($cache_file){
-	$cache_file = 'cache/'.$cache_file;	
-	$handle = fopen($cache_file, 'w'); // Открываем файл для записи и стираем его содержимое
-	fwrite($handle, ob_get_contents()); // Сохраняем всё содержимое буфера в файл
-	fclose($handle); // Закрываем файл
-	//ob_end_clean();//Данная функция до отправки контента в браузер уберётотправку ))).
-	ob_end_flush(); // Выводим страницу в браузере
+$cache_file=$this->dir.$cache_file;
+$handle=fopen($cache_file,'w');
+fwrite($handle,ob_get_contents());fclose($handle);ob_end_flush();}
 }
-//-----------------------------------------------------------------	
-//-----------------------------------------------------------------	
-
-private function MadeCache(){
-	ob_start();
-	
-	require($this->block_part_name);
-
-	$handle = fopen($this->cache_file, 'w'); // Открываем файл для записи и стираем его содержимое
-	fwrite($handle, ob_get_contents()); // Сохраняем всё содержимое буфера в файл
-	fclose($handle); // Закрываем файл
-	
-	ob_end_flush(); // Выводим страницу в браузере
-	ob_end_clean();
-}
-
-
-}
-?>

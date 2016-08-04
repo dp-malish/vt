@@ -1,6 +1,6 @@
 <?php
 if (!defined('MAIN_FILE')){exit;}
-$cache_time=604800;
+$cache_time=604800;$table_name='school';
 try{if($count_uri_parts>4){throw new Exception();}else{
 	if(!isset($uri_parts[1])){header('HTTP/1.1 301 Moved Permanently');header('Location: http://'.$site.'/школа-рыболова');exit();}
 //*********************************
