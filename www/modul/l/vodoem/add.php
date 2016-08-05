@@ -2,6 +2,8 @@
 if(!defined('MAIN_FILE')){exit;}
 //-----------
 if(isset($_POST['coordinats'])){
+	if(PostRequest::issetPostKey(['adress','base_name','fish','bilet','glubina','boat','ploschad','contacts','road','full_text'])){
+
 	$err_form_base=0;
 	$coordinats=Validator::html_cod($_POST['coordinats']);
 	$res_coordinats=Validator::LengthStr($coordinats,23);
@@ -153,7 +155,7 @@ if(isset($_POST['coordinats'])){
 	require $root.'/modul/l/vodoem/menu.php';
 		
 		if($err_form_base){
-		$main_content.='<h3>Возникли ошибки при добавлении рыболовной базы</h3>'
+		$main_content.='<h3>Возникли ошибки при добавлении водоёма</h3>'
 		.$print_err_form;
 		}else{//добавим работу с базой
 		$data_key=microtime(true);
@@ -201,6 +203,7 @@ if(isset($_POST['coordinats'])){
 		}else{$main_content.='<p>Ошибка базы данных, попробуйте ещё раз...</p>';}
 		}
 	$main_content.='</div>';
+	}else{$index=true;}
 	}else{
 $js_common='';
 $jscript.='<script type="text/jscript" src="/js/base/chosen_base.php"></script><script type="text/jscript" src="/js/ckeditor_base/ckeditor.js"></script><script type="text/jscript" src="/js/base/base_create.js"></script>';
@@ -223,4 +226,4 @@ $main_content.='</select><div class="clear"></div><div class="err_form" id="err_
 <div class="tr_fist align-left float-left"><p>Использование лодки:</p></div><div class="tr_second float-left"><input type="text" name="boat" id="boat" value="" class="tr_input" maxlength="180"><div class="err_form" id="err_boat"></div></div><div class="tr_third float-left"></div><div class="clear"></div>
 <div class="tr_fist align-left float-left"><p>Площадь водоема:</p></div><div class="tr_second float-left"><input type="text" name="ploschad" id="ploschad" value="" class="tr_input" maxlength="180"><div class="err_form" id="err_ploschad"></div></div><div class="tr_third float-left"></div><div class="clear"></div>
 <div class="tr_fist align-left float-left"><p>Контакты владельца:</p></div><div class="tr_second float-left"><input type="text" name="contacts" id="contacts" value="" class="tr_input"/><div class="err_form" id="err_contacts"></div></div><div class="tr_third float-left"><p>Телефон</p></div><div class="clear"></div>
-<div class="tr_fist align-left float-left"><p>Описание проезда:</p></div><div class="tr_second float-left"><textarea name="road" id="road" class="tr_input" rows="7"></textarea><div class="err_form" id="err_road"></div></div><div class="tr_third float-left"><p>Кратко о том, как доехать (максимум 1000 символов).</p></div><div class="login_tr_margin clear"></div><div class="tr_fist align-left float-left"><p>Описание водоёма:</p></div><div class="tr_second float-left"><textarea name="full_text" id="full_text" class="tr_input" rows="17"></textarea><div class="err_form" id="err_full_text"></div></div><div class="tr_third float-left"></div><div class="clear"></div><div class="tr_fist align-left float-left">&nbsp;</div><div class="tr_second float-left"><input class="tr_input" type="submit" name="send_base" id="send_base" value="Отправить"></div><div class="tr_third float-left">&nbsp;</div><div class="clear"></div></form></div>';}?>
+<div class="tr_fist align-left float-left"><p>Описание проезда:</p></div><div class="tr_second float-left"><textarea name="road" id="road" class="tr_input" rows="7"></textarea><div class="err_form" id="err_road"></div></div><div class="tr_third float-left"><p>Кратко о том, как доехать (максимум 1000 символов).</p></div><div class="login_tr_margin clear"></div><div class="tr_fist align-left float-left"><p>Описание водоёма:</p></div><div class="tr_second float-left"><textarea name="full_text" id="full_text" class="tr_input" rows="17"></textarea><div class="err_form" id="err_full_text"></div></div><div class="tr_third float-left"></div><div class="clear"></div><div class="tr_fist align-left float-left">&nbsp;</div><div class="tr_second float-left"><input class="tr_input" type="submit" name="send_base" id="send_base" value="Отправить"></div><div class="tr_third float-left">&nbsp;</div><div class="clear"></div></form></div>';}
