@@ -2,6 +2,7 @@
 //base
 if(!defined('MAIN_FILE')){exit;}
 $table_name='vodoemi';
+$table_name_ext='vodoemi_kind';
 $jscript.='<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>';
 $css.='<link rel="stylesheet" type="text/css" href="/css/base.css" media="screen,projection"><link rel="stylesheet" type="text/css" href="/css/chosen.css" media="screen,projection">';
 
@@ -26,7 +27,7 @@ if(isset($uri_parts[1]) && !isset($uri_parts[2])){
 			$menu2='class="sel_base_menu"';
 			$title='Добавить рыболовный водоём';
 			$description='ПОРТАЛ О РЫБАЛКЕ. Добавление Ваших рыболовных водоёмов в Украине, России и других странах СНГ.';
-			$keywords='рыбалка, карта водоемов, рыболовные базы, водоёмы';
+			$keywords='рыбалка, карта водоемов, рыболовные базы, водоёмы, добавить водоём';
 			if($live_user==1){require $root.'/modul/l/vodoem/add.php';
 			}else{
 				$main_content.='<div class="fon">';
@@ -36,18 +37,13 @@ if(isset($uri_parts[1]) && !isset($uri_parts[2])){
 			}
 			$bad_link = 0;
 		}
-
-
-
-
 		if($uri_parts[1]=='мои'){
-			$menu3 = 'class="sel_base_menu"';
-			$title = 'Мои рыболовные базу - РЫБАЛОВНЫЙ ПОРТАЛ';
-			$description = 'РЫБАЛОВНЫЙ ПОРТАЛ. Регистрация Ваших рыболовных баз в Украине и России.';
-			$keywords = 'РЫБАЛОВНЫЙ ПОРТАЛ, рыбалка, регистрация бызы, карта водоемов, рыболовные базы, водоёмы';
-			if ($live_user == 1) {
-				require($root . '/modul/l/vodoem/base_my.' . $phpEx);
-			} else {
+			$menu3='class="sel_base_menu"';
+			$title='Мои рыболовные водоёмы';
+			$description='РЫБАЛОВНЫЙ ПОРТАЛ. Регистрация Ваших водоёмов в Украине, России и других странах СНГ.';
+			$keywords='рыбалка, карта водоёмов, рыболовные базы, водоёмы, рыболовные базы, водоёмы, просмотреть водоёмы';
+			if($live_user==1){require $root.'/modul/l/vodoem/my.php';
+			}else{
 				$main_content .= '<div class="fon">';
 				include $root.'/modul/l/vodoem/menu.php';
 				$main_content .= '<p>Страница доступна только зарегистрированным пользователям. Для регистрации проследуйте по ссылке <a href="http://forum.vt-fishing.com.ua/register.php" >регистрация</a> либо воспользуйтесь формой входа представленной ниже:</p></div>';
@@ -65,7 +61,7 @@ if(isset($uri_parts[1]) && !isset($uri_parts[2])){
 //****// Base + две ссылка//****//
 if(isset($uri_parts[1]) && isset($uri_parts[2]) && !isset($uri_parts[3])){$bad_link=1;
 //-------------------------------------------------------------------------------
-if($uri_parts[1]=='update'){
+if($uri_parts[1]=='обновить'){
 $title='Редактирование рыболовных баз - Рыболовные базы - ПОРТАЛ О РЫБАЛКЕ';
 $description='Редактирование рыболовных баз. ПОРТАЛ О РЫБАЛКЕ. Рыболовные базы Украины и России.';
 $keywords='Редактирование баз,ПОРТАЛ О РЫБАЛКЕ, рыбалка, водоёмы, карта водоемов, рыболовные базы';$title.=$live_user;

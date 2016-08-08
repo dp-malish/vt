@@ -60,7 +60,7 @@ if(isset($_POST['coordinats'])){
 	$err_form_base=1;
 	$print_err_form.='<p>Перечень рыб не указан</p>';
 	}		
-	if(!preg_match("/^[А-яЁё,]+$/u",$fish)){
+	if(!preg_match("/^[А-яЁё,\s]+$/u",$fish)){
 	$err_form_base=1;
 	//
 	$print_err_form.='<p>В названии рыб используются запрещённые символы</p>';
@@ -154,28 +154,16 @@ if(isset($_POST['coordinats'])){
 	$main_content.='<div class="fon">';
 	require $root.'/modul/l/vodoem/menu.php';
 		
-		if($err_form_base){
-		$main_content.='<h3>Возникли ошибки при добавлении водоёма</h3>'
-		.$print_err_form;
+		if($err_form_base){$main_content.='<h3>Возникли ошибки при добавлении водоёма</h3>'.$print_err_form;
 		}else{//добавим работу с базой
 		$data_key=microtime(true);
-		$sql='INSERT INTO base_fish
+		$sql='INSERT INTO '.$table_name.'
 		(id,id_user,data,coordinats,adress,country_map,oblast_map,
 		base_name,fish,bilet,glubina,boat,ploschad,contacts,road,full_text) VALUES
-		(NULL,\''.$userid.'\',\''.$data_key.'\',\''.mysql_real_escape_string($coordinats).'\',
-		\''.mysql_real_escape_string($adress).'\',\''.mysql_real_escape_string($country_map).'\',\''.mysql_real_escape_string($oblast_map).'\',
-		\''.mysql_real_escape_string($base_name).'\',
-		\''.mysql_real_escape_string($fish).'\',
-		\''.mysql_real_escape_string($bilet).'\',
-		\''.mysql_real_escape_string($glubina).'\',
-		\''.mysql_real_escape_string($boat).'\',
-		\''.mysql_real_escape_string($ploschad).'\',
-		\''.mysql_real_escape_string($contacts).'\',
-		\''.mysql_real_escape_string($road).'\',
-		\''.mysql_real_escape_string($full_text).'\'
-		);';
-		$result = $MySQLsel->QuerySelect($sql);
-		if($result){
+		(NULL,\''.$userid.'\',\''.$data_key.'\',?,?,?,?,?,?,?,?,?,?,?,?,?);';
+		$sql=$DB->realEscape($sql,[$coordinats,$adress,$country_map,$oblast_map,$base_name,$fish,$bilet,$glubina,$boat,$ploschad,$contacts,$road,$full_text]);
+
+		if($DB->boolSQL($sql)){
 		$main_content.='<p>Новая запись добавлена!</p>';
 		$main_content.='<h3>Результат добавления рыболовной базы</h3>
 		<br>
@@ -189,16 +177,14 @@ if(isset($_POST['coordinats'])){
 		<p>Использование лодки: '.$boat.'</p>
 		<p>Площадь водоема: '.$ploschad.'</p>
 		<p>Контакты владельца: '.$contacts.'</p><br>';
-		//'.htmlspecialchars_decode($road,ENT_QUOTES).'		'.htmlspecialchars_decode($full_text,ENT_QUOTES);
-		$id_base_fish=mysql_insert_id();
-		$sql='INSERT INTO base_fish_kind (id,id_base_fish,fish) VALUES ';
+
+		$id_base_fish=$DB->lastId();
+		$sql='INSERT INTO '.$table_name_ext.' (id,id_vodoemi_fish,fish) VALUES ';
 		for($i=0;$i<$res_fish;$i++){
 		$sql.='(NULL,\''.$id_base_fish.'\',\''.$exp_fish[$i].'\')';
 		if($i<($res_fish-1)){$sql.=',';}else{$sql.=';';}
 		}
-		$result=$MySQLsel->QuerySelect($sql);
-		if($result){
-		$main_content.='<p>Разновидность рыб зафиксирована.</p>';}
+		if($DB->boolSQL($sql)){$main_content.='<p>Разновидность рыб зафиксирована.</p>';}
 		else{$main_content.='<p>Ошибка базы данных при добавлении рыб...</p>';}
 		}else{$main_content.='<p>Ошибка базы данных, попробуйте ещё раз...</p>';}
 		}
@@ -211,15 +197,14 @@ $jscript.='<script type="text/jscript" src="/js/base/chosen_base.php"></script><
 		require $root.'/modul/l/vodoem/menu.php';
 		$main_content.='<h3>Форма добавления рыболовной базы</h3><div id="note_base"><p>Для добавления нового объекта - находим место рыболовной базы на карте с максимальной точностью и щелкаем левой кнопкой мыши в это место. После чего вы увидите, как появится маркер.</p><p>Далее заполните все поля формы. Все поля являются обязательными для заполнения.</p></div><div id="note_base_click"><p>Просмотреть инструкцию</p></div></div>';
 		$main_content.='<div class="fon"><div id="map"></div></div>';
-		$main_content.='<div class="fon"><form id="base_create" action="/base/create" onSubmit="return ValidForm(this);" method="post">
+		$main_content.='<div class="fon"><form id="base_create" action="/водоёмы/добавить" onSubmit="return ValidForm(this);" method="post">
 <input name="coordinats" id="coordinats" type="hidden" value=""><input name="adress" id="adress" type="hidden" value=""><div class="tr_fist align-left float-left">&nbsp;</div><div class="tr_second float-left"><div class="err_form" id="err_coordinats"></div><div class="err_form" id="err_adress"></div></div><div class="tr_third float-left"></div><div class="clear"></div>
 <div class="tr_fist align-left float-left"><p>Название базы:</p></div><div class="tr_second float-left"><input type="text" name="base_name" id="base_name" value="" class="tr_input" maxlength="180"><div class="err_form" id="err_base_name"></div></div><div class="tr_third float-left"></div><div class="clear"></div>
 
 <input name="fish" type="hidden" id="fish" value=""><div class="tr_fist align-left float-left"><p>Рыба:</p></div><div class="tr_second float-left"><select class="chosen tr_select" multiple="true">';
 $sql="SELECT links,fish FROM reference_fish ORDER BY fish";
-$result=$MySQLsel->QuerySelect($sql);
-while($res=mysql_fetch_array($result)){
-$main_content.='<option>'.$res["fish"].'</option>';}
+$db_res=$DB->arrSQL($sql);
+foreach($db_res as $key=>$val){$main_content.='<option>'.$val["fish"].'</option>';}
 $main_content.='</select><div class="clear"></div><div class="err_form" id="err_fish"></div></div><div class="tr_third float-left"><p>Введите рыбу из списка</p></div><div class="clear"></div>
 <div class="tr_fist align-left float-left"><p>Отловочный билет:</p></div><div class="tr_second float-left"><input type="text" name="bilet" id="bilet" value="" class="tr_input" maxlength="180"><div class="err_form" id="err_bilet"></div></div><div class="tr_third float-left"></div><div class="clear"></div>
 <div class="tr_fist align-left float-left"><p>Глубина водоема:</p></div><div class="tr_second float-left"><input type="text" name="glubina" id="glubina" value="" class="tr_input" maxlength="180"><div class="err_form" id="err_glubina"></div></div><div class="tr_third float-left"></div><div class="clear"></div>
