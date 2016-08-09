@@ -8,7 +8,7 @@ $sql="SELECT id,data,coordinats,adress,country_map,oblast_map,
 base_name,fish,bilet,glubina,boat,ploschad,contacts
 FROM $table_name WHERE id_user=$userid";
 $db_res=$DB->arrSQL($sql);
-if(!$db_res){$main_content.='<p>У Вас нет добавленных Вами рыболовных баз. Для добавления базы наобходимо проследовать в раздел добавления рыболовной базы...</p>';
+if(!$db_res){$main_content.='<p>У Вас нет добавленных Вами водоёмов. Для добавления водоёма наобходимо проследовать в раздел <a href="/водоёмы/добавить">добавления водоёма</a>...</p>';
 }else{
     foreach($db_res as $key=>$val){
 $base_name=mb_convert_case($val['base_name'],MB_CASE_LOWER,"UTF-8");
