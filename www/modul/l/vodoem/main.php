@@ -1,5 +1,4 @@
 <?php
-//base
 if(!defined('MAIN_FILE')){exit;}
 $table_name='vodoemi';
 $table_name_ext='vodoemi_kind';
@@ -61,20 +60,19 @@ if(isset($uri_parts[1]) && !isset($uri_parts[2])){
 //****// Base + две ссылка//****//
 if(isset($uri_parts[1]) && isset($uri_parts[2]) && !isset($uri_parts[3])){$bad_link=1;
 //-------------------------------------------------------------------------------
-if($uri_parts[1]=='обновить'){
-$title='Редактирование рыболовных баз - Рыболовные базы - ПОРТАЛ О РЫБАЛКЕ';
-$description='Редактирование рыболовных баз. ПОРТАЛ О РЫБАЛКЕ. Рыболовные базы Украины и России.';
-$keywords='Редактирование баз,ПОРТАЛ О РЫБАЛКЕ, рыбалка, водоёмы, карта водоемов, рыболовные базы';$title.=$live_user;
-	if($live_user==1){require($root.'/blocks/base/base_update.'.$phpEx);
-	}else{
-	$main_content.='<div class="fon">';
-	require($root.'/blocks/base/menu_base.'.$phpEx);
-	$main_content.='<p>Страница доступна только зарегистрированным пользователям. Для регистрации проследуйте по ссылке <a href="http://forum.vt-fishing.com.ua/register.php" >регистрация</a> либо воспользуйтесь формой входа представленной ниже:</p></div>';
-		include $root.'/blocks/common/block/form_login.php';
-	$bad_link=0;}
+	if($uri_parts[1]=='обновить'){
+		$title='Редактирование рыболовных водоёмов - Рыболовные водоёмы';
+		$description='Редактирование рыболовных водоёмов. ПОРТАЛ О РЫБАЛКЕ. Рыболовные водоёмы Украины, России и других странах СНГ..';
+		$keywords='редактирование, рыбалка, водоёмы, карта водоемов, рыболовные базы';
+		if($live_user==1){include $root.'/modul/l/vodoem/update.php';
+		}else{
+			$main_content.='<div class="fon">';
+			include $root.'/blocks/common/block/form_login.php';
+			$main_content.='<p>Страница доступна только зарегистрированным пользователям. Для регистрации проследуйте по ссылке <a href="http://forum.vt-fishing.com.ua/register.php" >регистрация</a> либо воспользуйтесь формой входа представленной ниже:</p></div>';
+			include $root.'/blocks/common/block/form_login.php';
+			$bad_link=0;}
+	}
 	if($bad_link!=0){include $root.'/modul/l/vodoem/bad_content_404.php';}
-}//$uri_parts[1]=='update'
-
 }
 }//else $count_uri_parts
 }catch(Exception $e){$index=true;}

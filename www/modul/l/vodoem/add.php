@@ -195,7 +195,7 @@ $js_common='';
 $jscript.='<script type="text/jscript" src="/js/base/chosen_base.php"></script><script type="text/jscript" src="/js/ckeditor_base/ckeditor.js"></script><script type="text/jscript" src="/js/base/base_create.js"></script>';
 		$main_content.='<div class="fon">';
 		require $root.'/modul/l/vodoem/menu.php';
-		$main_content.='<h3>Форма добавления рыболовной базы</h3><div id="note_base"><p>Для добавления нового объекта - находим место рыболовной базы на карте с максимальной точностью и щелкаем левой кнопкой мыши в это место. После чего вы увидите, как появится маркер.</p><p>Далее заполните все поля формы. Все поля являются обязательными для заполнения.</p></div><div id="note_base_click"><p>Просмотреть инструкцию</p></div></div>';
+		$main_content.='<h3>Форма добавления водоёмов</h3><div id="note_base"><p>Для добавления нового объекта - находим место рыболовной базы на карте с максимальной точностью и щелкаем левой кнопкой мыши в это место. После чего вы увидите, как появится маркер.</p><p>Далее заполните все поля формы. Все поля являются обязательными для заполнения.</p></div><div id="note_base_click"><p>Просмотреть инструкцию</p></div></div>';
 		$main_content.='<div class="fon"><div id="map"></div></div>';
 		$main_content.='<div class="fon"><form id="base_create" action="/водоёмы/добавить" onSubmit="return ValidForm(this);" method="post">
 <input name="coordinats" id="coordinats" type="hidden" value=""><input name="adress" id="adress" type="hidden" value=""><div class="tr_fist align-left float-left">&nbsp;</div><div class="tr_second float-left"><div class="err_form" id="err_coordinats"></div><div class="err_form" id="err_adress"></div></div><div class="tr_third float-left"></div><div class="clear"></div>
