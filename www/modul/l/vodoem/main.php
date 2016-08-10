@@ -6,14 +6,13 @@ $jscript.='<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/j
 $css.='<link rel="stylesheet" type="text/css" href="/css/base.css" media="screen,projection"><link rel="stylesheet" type="text/css" href="/css/chosen.css" media="screen,projection">';
 
 //temp
-if($site=='vt'){$live_user=1;$userid=198;}
+//if($site=='vt'){$live_user=1;$userid=198;}
 
-try{if($count_uri_parts>3){throw new Exception();}else{
+try{if($count_uri_parts>4){throw new Exception();}else{
 	
-if(!isset($uri_parts[1])){include $root.'/modul/l/vodoem/all.php';}
+	if(!isset($uri_parts[1])){include $root.'/modul/l/vodoem/all.php';}
 
-//****водоёмы + одна ссылка****//
-if(isset($uri_parts[1]) && !isset($uri_parts[2])){
+	if(isset($uri_parts[1]) && !isset($uri_parts[2])){
 
 	if(Validator::paternInt($uri_parts[1])){include $root.'/modul/l/vodoem/all.php';
 	}else{
@@ -34,7 +33,7 @@ if(isset($uri_parts[1]) && !isset($uri_parts[2])){
 				$main_content.='<p>Страница доступна только зарегистрированным пользователям. Для регистрации проследуйте по ссылке <a href="http://forum.vt-fishing.com.ua/register.php" >регистрация</a> либо воспользуйтесь формой входа представленной ниже:</p></div>';
 				include $root.'/blocks/common/block/form_login.php';
 			}
-			$bad_link = 0;
+			$bad_link=0;
 		}
 		if($uri_parts[1]=='мои'){
 			$menu3='class="sel_base_menu"';
@@ -53,13 +52,10 @@ if(isset($uri_parts[1]) && !isset($uri_parts[2])){
 		if($bad_link!=0){include $root.'/modul/l/vodoem/bad_content_404.php';}
 		}
 	}
-}
-//****//Вывод по одной ссылке конец//****//
+	}
 
-
-//****// Base + две ссылка//****//
-if(isset($uri_parts[1]) && isset($uri_parts[2]) && !isset($uri_parts[3])){$bad_link=1;
-//-------------------------------------------------------------------------------
+	if(isset($uri_parts[2]) && !isset($uri_parts[3])){$bad_link=1;
+	if($uri_parts[1]=='по-областям'){include $root.'/modul/l/vodoem/oblasti.php';}
 	if($uri_parts[1]=='обновить'){
 		$title='Редактирование рыболовных водоёмов - Рыболовные водоёмы';
 		$description='Редактирование рыболовных водоёмов. ПОРТАЛ О РЫБАЛКЕ. Рыболовные водоёмы Украины, России и других странах СНГ..';
@@ -73,6 +69,12 @@ if(isset($uri_parts[1]) && isset($uri_parts[2]) && !isset($uri_parts[3])){$bad_l
 			$bad_link=0;}
 	}
 	if($bad_link!=0){include $root.'/modul/l/vodoem/bad_content_404.php';}
-}
+	}
+
+	if(isset($uri_parts[3])){
+		if($uri_parts[1]=='по-областям'){
+			(Validator::paternInt($uri_parts[3])?include $root.'/modul/l/vodoem/oblasti.php':$bad_link=1);}
+		if($bad_link!=0){include $root.'/modul/l/vodoem/bad_content_404.php';}
+	}
 }//else $count_uri_parts
 }catch(Exception $e){$index=true;}

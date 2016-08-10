@@ -74,8 +74,8 @@ p{margin:5px}
 }
 
 
-.nav_link a{margin:0 3px}
-@media screen and (min-width:240px) and (max-width:780px){.nav_link a{margin:0 10px}}
+.nav_link a{margin:0 3px;display:inline-block}
+@media screen and (min-width:240px) and (max-width:780px){.nav_link a{margin:25px 24px}}
 .img_link{border-radius:6px}
 
 /*school*/
