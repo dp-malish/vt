@@ -74,35 +74,37 @@ $.ajax({
 }
 //**************banner links*****************
 $(document).ready(function(){              // по окончанию загрузки страницы
-    $('#slid_one').click(function(){      // вешаем на клик по элементу с id=slid_one
+    $("#slid_one").click(function(){      // вешаем на клик по элементу с id=slid_one
         if (confirm("Просмотреть отчёт о мероприятии на форуме?")){
   		window.location.href="http://forum.vt-fishing.com.ua/meropriyatiya-kluba/212-kak-vse-bylo-1-madh-maiskii-piknik-na-zahar-evskom-vodohranilische-2.html#post3391";
 		} // загрузку HTML кода из файла example.html               
 		})
 		
-	    $('#slid_five').click(function(){if (confirm("Просмотреть отчёт о мероприятии на форуме?")){window.location.href="http://forum.vt-fishing.com.ua/meropriyatiya-kluba/258-sorevnovaniya-po-lovle-hischnoi-ryby-spinningom-kubok-zahar-evki-2015-osen-4.html#post3872";}})
+	    $("#slid_five").click(function(){if (confirm("Просмотреть отчёт о мероприятии на форуме?")){window.location.href="http://forum.vt-fishing.com.ua/meropriyatiya-kluba/258-sorevnovaniya-po-lovle-hischnoi-ryby-spinningom-kubok-zahar-evki-2015-osen-4.html#post3872";}})
 		
 });
 //**************End banner links End*****************
 
 $(document).ready(function(){
-$('#weather').load('/ajax/site/weather.html');
+$("#weather").load("/ajax/site/weather.html");
 
-PostNoParam('stat_forum','stat_forum');//вытяжка с форума
-
+  if(document.location.pathname=="/"){
+    PostNoParam("stat_forum","stat_forum");//вытяжка с форума
+    $("#map").load("/ajax/vodoemi/");
+  }
 //$('#accordion ul:eq(0)').show();
 // вызов функции слайдера
-var f=document.getElementById('main_slider'),
-    img=f.getElementsByTagName('img'),
-    button=f.getElementsByTagName('div')[0].getElementsByTagName('button');
-slider(f,img,button,'7000','1000');  // '7000' — скорость смены картинок, '1000' — скорость прозрачности
+var f=document.getElementById("main_slider"),
+    img=f.getElementsByTagName("img"),
+    button=f.getElementsByTagName("div")[0].getElementsByTagName("button");
+slider(f,img,button,"7000","1000");  // '7000' — скорость смены картинок, '1000' — скорость прозрачности
 });
 
 //****************fish_menu****************************
 $(document).ready(function(){
 	$("#fish_menu > li > div").click(function(){
-    if(false==$(this).next().is(':visible')){
-        $('#fish_menu ul').slideUp(350);
+    if(false==$(this).next().is(":visible")){
+        $("#fish_menu ul").slideUp(350);
     }
     $(this).next().slideToggle(350);
 	});

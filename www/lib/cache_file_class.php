@@ -4,14 +4,14 @@ class Cache_File{
 	protected $dir='cache_all/';
 
 public function IsSetCacheFile($cache_file){$cache_file=$this->dir.$cache_file;
-if(file_exists($cache_file))return file_get_contents($cache_file);else return 0;}
+if(file_exists($cache_file))return file_get_contents($cache_file);else return false;}
 
 public function IsSetCacheFileTime($cache_time,$cache_file){
 $cache_file=$this->dir.$cache_file;
 if(file_exists($cache_file)){
 if((time()-$cache_time)< filemtime($cache_file)){
-return file_get_contents($cache_file);}else{return 0;}
-}else{return 0;}
+return file_get_contents($cache_file);}else{return false;}
+}else{return false;}
 }
 //------------------------------
 public function StartCache(){ob_start();}

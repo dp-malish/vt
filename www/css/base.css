@@ -3,9 +3,7 @@
 #note_base{
 	display:none;
 }
-#map{min-height:400px;
-
-}
+#map{min-height:400px}
 .tr_fist{
 	width:25%;
 	overflow:hidden;
